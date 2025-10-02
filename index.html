@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGest+ | Gestión Automotriz Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">AutoGest+</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="citas">Formulario Citas</a></li>
+                <li><a href="#" data-page="clientes">Clientes</a></li>
+                <li><a href="#" data-page="mecanicos">Mecánicos</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Bienvenido a AutoGest+</h1>
+                    <p>La solución completa para la gestión de tu taller automotriz</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" data-page="citas">Agendar Cita</button>
+                        <button class="btn btn-secondary" data-page="clientes">Ver Más</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="services-section">
+                <div class="container">
+                    <h2 class="section-title fade-in">Nuestros Servicios</h2>
+                    <div class="cards-grid">
+                        <div class="card fade-in">
+                            <div class="card-icon">🔧</div>
+                            <h3>Mantenimiento</h3>
+                            <p>Servicios completos de mantenimiento preventivo y correctivo para tu vehículo con los mejores estándares de calidad.</p>
+                        </div>
+                        <div class="card fade-in">
+                            <div class="card-icon">⚙️</div>
+                            <h3>Reparaciones</h3>
+                            <p>Diagnóstico y reparación especializada con tecnología de punta y mecánicos certificados.</p>
+                        </div>
+                        <div class="card fade-in">
+                            <div class="card-icon">📋</div>
+                            <h3>Diagnóstico</h3>
+                            <p>Análisis computarizado completo para detectar cualquier problema en tu vehículo de manera precisa.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Citas Page -->
+        <div id="citas" class="page">
+            <section class="form-section">
+                <div class="container">
+                    <h2 class="section-title">Formulario de Citas</h2>
+                    <div class="form-container">
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo</label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +502 1234-5678">
+                            </div>
+                            <div class="form-group">
+                                <label for="vehiculo">Vehículo</label>
+                                <input type="text" id="vehiculo" name="vehiculo" required placeholder="Marca y modelo">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha de Cita</label>
+                                <input type="date" id="fecha" name="fecha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="servicio">Tipo de Servicio</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="">Selecciona un servicio</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                    <option value="reparacion">Reparación</option>
+                                    <option value="diagnostico">Diagnóstico</option>
+                                    <option value="revision">Revisión General</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comentarios">Comentarios Adicionales</label>
+                                <textarea id="comentarios" name="comentarios" placeholder="Describe el problema o servicio requerido"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Agendar Cita</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Clientes Page -->
+        <div id="clientes" class="page">
+            <section class="clients-section">
+                <div class="container">
+                    <h2 class="section-title">Clientes</h2>
+                    <div class="clients-grid">
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">Juan Pérez</div>
+                            <div class="client-role">Cliente Frecuente</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> Toyota Corolla 2020</p>
+                                <p><strong>Última visita:</strong> 15/09/2025</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">María González</div>
+                            <div class="client-role">Cliente Premium</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> Honda Civic 2021</p>
+                                <p><strong>Última visita:</strong> 20/09/2025</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">Carlos Rodríguez</div>
+                            <div class="client-role">Cliente Regular</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> Mazda 3 2019</p>
+                                <p><strong>Última visita:</strong> 10/09/2025</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">Ana Martínez</div>
+                            <div class="client-role">Cliente VIP</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> BMW X5 2022</p>
+                                <p><strong>Última visita:</strong> 25/09/2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Mecánicos Page -->
+        <div id="mecanicos" class="page">
+            <section class="mechanics-section">
+                <div class="container">
+                    <h2 class="section-title">Nuestros Mecánicos</h2>
+                    <div class="clients-grid">
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Roberto Sánchez</div>
+                            <div class="client-role">Mecánico Certificado</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Motores Diesel</p>
+                                <p><strong>Experiencia:</strong> 15 años</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Luis Hernández</div>
+                            <div class="client-role">Especialista en Motor</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Motores Gasolina</p>
+                                <p><strong>Experiencia:</strong> 12 años</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Pedro Ramírez</div>
+                            <div class="client-role">Técnico Eléctrico</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Sistemas Eléctricos</p>
+                                <p><strong>Experiencia:</strong> 10 años</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Miguel Torres</div>
+                            <div class="client-role">Jefe de Taller</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Gestión y Supervisión</p>
+                                <p><strong>Experiencia:</strong> 20 años</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 AutoGest+. Todos los derechos reservados.</p>
+        <p>Sistema de Gestión Automotriz Profesional</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

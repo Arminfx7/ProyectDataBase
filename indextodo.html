@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGest+ | Gestión Automotriz Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #f59e0b;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Page System */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        .services-section,
+        .form-section,
+        .clients-section,
+        .mechanics-section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .card p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* Form Section */
+        .form-container {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Clients Section */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .client-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            margin: 0 auto 1rem;
+        }
+
+        .mechanic-avatar {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        }
+
+        .client-name {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .client-role {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .client-info {
+            text-align: left;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .client-info p {
+            margin: 0.5rem 0;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .client-info strong {
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 0.5rem 0;
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+
+            .cards-grid,
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">AutoGest+</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="citas">Formulario Citas</a></li>
+                <li><a href="#" data-page="clientes">Clientes</a></li>
+                <li><a href="#" data-page="mecanicos">Mecánicos</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Bienvenido a AutoGest+</h1>
+                    <p>La solución completa para la gestión de tu taller automotriz</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" data-page="citas">Agendar Cita</button>
+                        <button class="btn btn-secondary" data-page="clientes">Ver Más</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="services-section">
+                <div class="container">
+                    <h2 class="section-title fade-in">Nuestros Servicios</h2>
+                    <div class="cards-grid">
+                        <div class="card fade-in">
+                            <div class="card-icon">🔧</div>
+                            <h3>Mantenimiento</h3>
+                            <p>Servicios completos de mantenimiento preventivo y correctivo para tu vehículo con los mejores estándares de calidad.</p>
+                        </div>
+                        <div class="card fade-in">
+                            <div class="card-icon">⚙️</div>
+                            <h3>Reparaciones</h3>
+                            <p>Diagnóstico y reparación especializada con tecnología de punta y mecánicos certificados.</p>
+                        </div>
+                        <div class="card fade-in">
+                            <div class="card-icon">📋</div>
+                            <h3>Diagnóstico</h3>
+                            <p>Análisis computarizado completo para detectar cualquier problema en tu vehículo de manera precisa.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Citas Page -->
+        <div id="citas" class="page">
+            <section class="form-section">
+                <div class="container">
+                    <h2 class="section-title">Formulario de Citas</h2>
+                    <div class="form-container">
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo</label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +502 1234-5678">
+                            </div>
+                            <div class="form-group">
+                                <label for="vehiculo">Vehículo</label>
+                                <input type="text" id="vehiculo" name="vehiculo" required placeholder="Marca y modelo">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha de Cita</label>
+                                <input type="date" id="fecha" name="fecha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="servicio">Tipo de Servicio</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="">Selecciona un servicio</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                    <option value="reparacion">Reparación</option>
+                                    <option value="diagnostico">Diagnóstico</option>
+                                    <option value="revision">Revisión General</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comentarios">Comentarios Adicionales</label>
+                                <textarea id="comentarios" name="comentarios" placeholder="Describe el problema o servicio requerido"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Agendar Cita</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Clientes Page -->
+        <div id="clientes" class="page">
+            <section class="clients-section">
+                <div class="container">
+                    <h2 class="section-title">Clientes</h2>
+                    <div class="clients-grid">
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">Juan Pérez</div>
+                            <div class="client-role">Cliente Frecuente</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> Toyota Corolla 2020</p>
+                                <p><strong>Última visita:</strong> 15/09/2025</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">María González</div>
+                            <div class="client-role">Cliente Premium</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> Honda Civic 2021</p>
+                                <p><strong>Última visita:</strong> 20/09/2025</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">Carlos Rodríguez</div>
+                            <div class="client-role">Cliente Regular</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> Mazda 3 2019</p>
+                                <p><strong>Última visita:</strong> 10/09/2025</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar">👤</div>
+                            <div class="client-name">Ana Martínez</div>
+                            <div class="client-role">Cliente VIP</div>
+                            <div class="client-info">
+                                <p><strong>Vehículo:</strong> BMW X5 2022</p>
+                                <p><strong>Última visita:</strong> 25/09/2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Mecánicos Page -->
+        <div id="mecanicos" class="page">
+            <section class="mechanics-section">
+                <div class="container">
+                    <h2 class="section-title">Nuestros Mecánicos</h2>
+                    <div class="clients-grid">
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Roberto Sánchez</div>
+                            <div class="client-role">Mecánico Certificado</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Motores Diesel</p>
+                                <p><strong>Experiencia:</strong> 15 años</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Luis Hernández</div>
+                            <div class="client-role">Especialista en Motor</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Motores Gasolina</p>
+                                <p><strong>Experiencia:</strong> 12 años</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Pedro Ramírez</div>
+                            <div class="client-role">Técnico Eléctrico</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Sistemas Eléctricos</p>
+                                <p><strong>Experiencia:</strong> 10 años</p>
+                            </div>
+                        </div>
+                        <div class="client-card">
+                            <div class="client-avatar mechanic-avatar">🔧</div>
+                            <div class="client-name">Miguel Torres</div>
+                            <div class="client-role">Jefe de Taller</div>
+                            <div class="client-info">
+                                <p><strong>Especialidad:</strong> Gestión y Supervisión</p>
+                                <p><strong>Experiencia:</strong> 20 años</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 AutoGest+. Todos los derechos reservados.</p>
+        <p>Sistema de Gestión Automotriz Profesional</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navigation system
+        const pages = document.querySelectorAll('.page');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+        const logo = document.querySelector('.logo');
+
+        function showPage(pageName) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageName);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+            
+            // Update active nav link
+            navLinksItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageName) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu
+            navLinks.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Nav links click events
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageName = link.getAttribute('data-page');
+                showPage(pageName);
+            });
+        });
+
+        // Logo click to home
+        logo.addEventListener('click', () => {
+            showPage('home');
+        });
+
+        // CTA buttons
+        document.querySelectorAll('[data-page]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') {
+                    const pageName = e.target.getAttribute('data-page');
+                    showPage(pageName);
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        const appointmentForm = document.getElementById('appointmentForm');
+        appointmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                vehiculo: document.getElementById('vehiculo').value,
+                fecha: document.getElementById('fecha').value,
+                servicio: document.getElementById('servicio').value,
+                comentarios: document.getElementById('comentarios').value
+            };
+
+            // Show success message
+            alert(`¡Cita agendada exitosamente!\n\nNombre: ${formData.nombre}\nFecha: ${formData.fecha}\nServicio: ${formData.servicio}\n\nNos pondremos en contacto contigo pronto.`);
+            
+            // Reset form
+            appointmentForm.reset();
+        });
+
+        // Set minimum date for appointment to today
+        const fechaInput = document.getElementById('fecha');
+        const today = new Date().toISOString().split('T')[0];
+        fechaInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
