@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Registro de Empleados | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="./styles/empleados.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-section">
+                <img src="./img/logo.png" alt="AutoGest Logo" />
+                <h1>AutoGest<span>+</span></h1>
+            </div>
+            <div class="sidebar-desc">
+                Registro para nuevos empleados.<br>
+                Completa el siguiente formulario.
+            </div>
+        </div>
+        <form>
+            <h2>Registrar Nuevo Empleado</h2>
+            <div class="inputs-row">
+                <label>Nombres
+                    <input type="text" name="nombre" placeholder="Nombres" required>
+                </label>
+                <label>Apellidos
+                    <input type="text" name="apellido" placeholder="Apellidos" required>
+                </label>
+            </div>
+            <div class="inputs-row">
+                <label>Correo Electrónico
+                    <input type="email" name="email" placeholder="correo@email.com" required>
+                </label>
+                <label>Teléfono
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                </label>
+            </div>
+            <div class="inputs-row">
+                <label>Sueldo
+                    <input type="number" name="sueldo" placeholder="Q.1000.00" required>
+                </label>
+                <label>Cargo
+                    <select name="cargo" required>
+                        <option value="">Selecciona un cargo</option>
+                        <option value="Mecánico">Mecánico</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Recepcionista">Recepcionista</option>
+                        <option value="Jefe de Taller">Jefe de Taller</option>
+                        <option value="Auxiliar">Auxiliar</option>
+                    </select>
+                </label>
+            </div>
+            <div class="submit-row">
+                <button type="submit">Registrar Empleado</button>
+            </div>
+        </form>
+    </div>
+    <script src="./APIs/empleados.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #f8fafc;
+            color: #1e2022;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 2rem;
+        }
+        .sidebar {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem 1.8rem;
+            width: 330px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .logo-section img {
+            width: 120px;
+            height: 120px;
+            background: #385563;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .logo-section h1 {
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin: 0;
+            color: #385563;
+        }
+        .logo-section h1 span {
+            color: #e06040;
+        }
+        .sidebar-desc {
+            color: #62646a;
+            margin-bottom: 2rem;
+            font-size: 1.07rem;
+        }
+        form {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2.2rem 2rem;
+            flex-grow: 1;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            min-width: 5;
+        }
+        form h2 {
+            font-weight: 700;
+            margin-bottom: 1.6rem;
+            font-size: 1.35rem;
+        }
+        .inputs-row {
+            display: flex;
+            gap: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        label {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        label input, label select {
+            padding: 0.7rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            font-size: 1rem;
+            background: #f8fafc;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        label input:focus, label select:focus {
+            border-color: #3b82f6;
+        }
+        label select {
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .submit-row {
+            text-align: right;
+            margin-top: 2rem;
+        }
+        button[type="submit"] {
+            background: #385563;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.7rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: #ee7a1b;
+        }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                max-width: 94vw;
+            }
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
