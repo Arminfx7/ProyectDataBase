@@ -8,16 +8,28 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
+        <aside class="sidebar">
+        <div>
             <div class="logo-section">
-                <img src="./img/logo.png" alt="AutoGest Logo" />
+                <img src="./img/logo.png" alt="AutoGest Logo">
                 <h1>AutoGest<span>+</span></h1>
             </div>
-            <div class="sidebar-desc">
-                Registro para nuevos empleados.<br>
-                Completa el siguiente formulario.
-            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active">Dashboard</li>
+                    <li>Citas</li>
+                    <li>Productos</li>
+                    <li>Clientes</li>
+                    <li>Mecánicos</li>
+                    <li>Proveedores</li>
+                </ul>
+            </nav>
         </div>
+        <div class="nav-bottom">
+            <div>Configuración</div>
+            <div style="margin-top:6px;">Cerrar Sesión</div>
+        </div>
+    </aside>
         <form>
             <h2>Registrar Nuevo Empleado</h2>
             <div class="inputs-row">

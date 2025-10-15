@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="./styles/dashboard.css" rel="stylesheet">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div>
+            <div class="logo-section">
+                <img src="./img/logo.png" alt="AutoGest Logo">
+                <h1>AutoGest<span>+</span></h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active">Dashboard</li>
+                    <li>Citas</li>
+                    <li>Productos</li>
+                    <li>Clientes</li>
+                    <li>Mecánicos</li>
+                    <li>Proveedores</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav-bottom">
+            <div>Configuración</div>
+            <div style="margin-top:6px;">Cerrar Sesión</div>
+        </div>
+    </aside>
+    <main class="main-content">
+        <header>
+            <input class="searchbar" placeholder="Buscar empleado">
+            <div style="display:flex;align-items:center;gap:1.1rem;">
+                <span><img src="./img/bell-fill.svg"></span>
+                <span><img src="./img/gear-fill.svg"></span>
+                <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:#e0e7ef;"></span>
+            </div>
+        </header>
+        <div>
+            <div class="dashboard-metrics">
+                <div class="metric-card">
+                    <span class="desc">Clientes</span>
+                    <span class="value">200</span>
+                </div>
+                <div class="metric-card">
+                    <span class="desc">Carros Pendientes</span>
+                    <span class="value">350</span>
+                </div>
+                <div class="metric-card bg">
+                    <span class="desc">Ventas Diarias</span>
+                    <span class="value">Q.50,000</span>
+                </div>
+                <div class="metric-card bg2">
+                    <span class="desc">Carros Reparados</span>
+                    <span class="value">250</span>
+                </div>
+            </div>
+            <div class="dashboard-charts">
+                <div class="sales-chart">
+                    <strong>Sales Details</strong>
+                    <div class="chart-mock">
+                        <canvas class="line" width="400" height="160"></canvas>
+                        <span class="chart-mock-label">61,0664</span>
+                    </div>
+                </div>
+                <div class="details-table">
+                    <strong>Detalles</strong>
+                    <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Carro</th>
+                                <th>Cliente</th>
+                                <th>Fecha</th>
+                                <th>Placa</th>
+                                <th>Precio</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=60" alt="Carro 1"></td>
+                                <td>6068 Marjalene Landing</td>
+                                <td>12.08.2019 - 12:53 PM</td>
+                                <td>423</td>
+                                <td>534</td>
+                                <td><span class="status deliv">Deliv</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=60" alt="Carro 2"></td>
+                                <td>6068 Marjalene Landing</td>
+                                <td>12.08.2019 - 12:53 PM</td>
+                                <td>423</td>
+                                <td>295</td>
+                                <td><span class="status pend">Pend</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=60" alt="Carro 3"></td>
+                                <td>6068 Marjalene Landing</td>
+                                <td>12.08.2019 - 12:53 PM</td>
+                                <td>423</td>
+                                <td>849</td>
+                                <td><span class="status rep">Repar</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    const canvas = document.querySelector('.chart-mock canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.strokeStyle = "#2871c3";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(0, 100);
+    ctx.lineTo(40, 85);
+    ctx.lineTo(70, 110);
+    ctx.lineTo(110, 60);
+    ctx.lineTo(140, 100);
+    ctx.lineTo(170, 105);
+    ctx.lineTo(200, 74);
+    ctx.lineTo(240, 95);
+    ctx.lineTo(290, 84);
+    ctx.lineTo(370, 110);
+    ctx.lineTo(400, 87);
+    ctx.stroke();
+</script>
+</body>
+</html>
