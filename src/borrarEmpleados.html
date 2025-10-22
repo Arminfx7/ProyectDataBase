@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Eliminar Empleados | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="./styles/eliminarEmpleados.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div>
+                <div class="logo-section">
+                    <img src="./img/logo.png" alt="AutoGest Logo">
+                    <h1>AutoGest<span>+</span></h1>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Citas</li>
+                        <li>Productos</li>
+                        <li>Clientes</li>
+                        <li class="active">Empleados</li>
+                        <li>Proveedores</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-bottom">
+                <div>Configuración</div>
+                <div style="margin-top:6px;">Cerrar Sesión</div>
+            </div>
+        </aside>
+        
+        <form>
+            <h2>Eliminar Empleado</h2>
+            
+            <div class="select-employee">
+                <label for="empleadoSelect">Seleccionar Empleado a Eliminar</label>
+                <select id="empleadoSelect" required>
+                    <option value="">Cargando empleados...</option>
+                </select>
+            </div>
+
+            <div class="inputs-row">
+                <label>Nombres
+                    <input type="text" name="nombre" placeholder="Nombres">
+                </label>
+                <label>Apellidos
+                    <input type="text" name="apellido" placeholder="Apellidos">
+                </label>
+            </div>
+            
+            <div class="inputs-row">
+                <label>Correo Electrónico
+                    <input type="email" name="email" placeholder="correo@email.com">
+                </label>
+                <label>Teléfono
+                    <input type="tel" name="telefono" placeholder="Teléfono">
+                </label>
+            </div>
+            
+            <div class="inputs-row">
+                <label>Sueldo
+                    <input type="text" name="sueldo" placeholder="Q.1000.00">
+                </label>
+                <label>Cargo
+                    <input type="text" name="cargo" placeholder="Cargo">
+                </label>
+            </div>
+
+            <div class="inputs-row">
+                <label>Fecha de Contratación
+                    <input type="text" name="fechaContratacion" placeholder="Fecha">
+                </label>
+                <label>&nbsp;</label>
+            </div>
+            
+            <div class="submit-row">
+                <button type="button" id="btnEliminar">Eliminar Empleado</button>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="./APIs/empleados.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet"><!-- Usa aquí tu CSS general -->
+    <style>
+        body { display:flex; justify-content: center; align-items: center; height:100vh; }
+        .login-form {
+            background: #fff; border-radius: 14px; box-shadow: 0 6px 38px rgba(0,0,0,0.07);
+            padding: 3rem 2.8rem; width: 370px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .login-form img { width: 54px; margin-bottom: .7rem; }
+        .login-form h2 { margin-bottom: 2rem; color: #385563; }
+        .login-form label { width:100%; margin-bottom: .8rem; color: #374151; font-weight:500;}
+        .login-form input { width:100%; padding: .85rem 1rem; margin-top: .3rem; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; font-size:1rem;}
+        .login-form button { width:100%; padding: .9rem; border-radius: 8px; background: #385563; color:#fff;font-weight:700; margin-top:1.1rem; border:none; cursor:pointer; transition:background .21s;}
+        .login-form button:hover {background: #ee7a1b;}
+        .login-form .enlace {margin-top:1rem; font-size:.95rem;}
+    </style>
+</head>
+<body>
+    <form class="login-form">
+        <img src="./img/logo.png" alt="AutoGest Logo">
+        <h2>Iniciar Sesión</h2>
+        <label>Correo electrónico
+            <input type="email" required placeholder="correo@email.com">
+        </label>
+        <label>Contraseña
+            <input type="password" required placeholder="Contraseña">
+        </label>
+        <button type="submit">Entrar</button>
+        <div class="enlace">
+            ¿No tienes cuenta? <a href="register.html" style="color:#385563;">Regístrate aquí</a>
+        </div>
+    </form>
+</body>
+</html>

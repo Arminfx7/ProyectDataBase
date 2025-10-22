@@ -2,36 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Registro de Empleados | AutoGest+</title>
+    <title>Actualizar Empleados | AutoGest+</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="./styles/empleados.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
-        <div>
-            <div class="logo-section">
-                <img src="./img/logo.png" alt="AutoGest Logo">
-                <h1>AutoGest<span>+</span></h1>
+            <div>
+                <div class="logo-section">
+                    <img src="./img/logo.png" alt="AutoGest Logo">
+                    <h1>AutoGest<span>+</span></h1>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Citas</li>
+                        <li>Productos</li>
+                        <li>Clientes</li>
+                        <li class="active">Empleados</li>
+                        <li>Proveedores</li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li>Dashboard</li>
-                    <li>Citas</li>
-                    <li>Productos</li>
-                    <li>Clientes</li>
-                    <li class="active">Empleados</li>
-                    <li>Proveedores</li>
-                </ul>
-            </nav>
-        </div>
-        <div class="nav-bottom">
-            <div>Configuración</div>
-            <div style="margin-top:6px;">Cerrar Sesión</div>
-        </div>
-    </aside>
-        <form>
-            <h2>Registrar Nuevo Empleado</h2>
+            <div class="nav-bottom">
+                <div>Configuración</div>
+                <div style="margin-top:6px;">Cerrar Sesión</div>
+            </div>
+        </aside>
+
+        <form id="updateForm">
+            <h2>Actualizar Empleado</h2>
+
+            <div class="inputs-row">
+                <label>Empleado
+                    <select id="empleadoSelect" required>
+                        <option value="">Cargando empleados...</option>
+                    </select>
+                </label>
+            </div>
+
             <div class="inputs-row">
                 <label>Nombres
                     <input type="text" name="nombre" placeholder="Nombres" required>
@@ -40,6 +50,7 @@
                     <input type="text" name="apellido" placeholder="Apellidos" required>
                 </label>
             </div>
+
             <div class="inputs-row">
                 <label>Correo Electrónico
                     <input type="email" name="email" placeholder="correo@email.com" required>
@@ -48,6 +59,7 @@
                     <input type="tel" name="telefono" placeholder="Teléfono" required>
                 </label>
             </div>
+
             <div class="inputs-row">
                 <label>Sueldo
                     <input type="number" name="sueldo" placeholder="Q.1000.00" required>
@@ -62,11 +74,13 @@
                     </select>
                 </label>
             </div>
+
             <div class="submit-row">
-                <button type="submit">Registrar Empleado</button>
+                <button type="submit">Actualizar Empleado</button>
             </div>
         </form>
     </div>
-    <script src="./APIs/empleados.js"></script>
+
+    <script type="module" src="./scripts/actualizarEmpleados.js"></script>
 </body>
 </html>

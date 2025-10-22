@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet">
+    <style>
+        body { display:flex; justify-content: center; align-items: center; height:100vh; }
+        .register-form {
+            background: #fff; border-radius: 14px; box-shadow: 0 6px 38px rgba(0,0,0,0.07);
+            padding: 3rem 2.5rem; width: 440px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .register-form img { width: 54px; margin-bottom: .7rem; }
+        .register-form h2 { margin-bottom: 1.7rem; color: #385563; }
+        .register-form label { width:100%; margin-bottom: .9rem; color: #374151; font-weight:500;}
+        .register-form input { width:100%; padding: .92rem 1rem; margin-top: .3rem; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; font-size:1rem;}
+        .register-form select { width:100%; padding: .87rem 1rem; margin-top: .3rem; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; font-size:1rem;}
+        .register-form button { width:100%; padding: .93rem; border-radius: 8px; background: #385563; color:#fff;font-weight:700; margin-top:1.2rem; border:none; cursor:pointer; transition:background .21s;}
+        .register-form button:hover {background: #ee7a1b;}
+        .register-form .enlace {margin-top:1rem; font-size:.95rem;}
+    </style>
+</head>
+<body>
+    <form class="register-form">
+        <img src="./img/logo.png" alt="AutoGest Logo">
+        <h2>Registro Nuevo Usuario</h2>
+        <label>Nombres
+            <input type="text" required placeholder="Nombres">
+        </label>
+        <label>Apellidos
+            <input type="text" required placeholder="Apellidos">
+        </label>
+        <label>Correo Electrónico
+            <input type="email" required placeholder="correo@email.com">
+        </label>
+        <label>Contraseña
+            <input type="password" required placeholder="Contraseña">
+        </label>
+        <label>Cargo
+            <select required>
+                <option value="">Selecciona un cargo</option>
+                <option value="Mecánico">Mecánico</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Recepcionista">Recepcionista</option>
+                <option value="Jefe de Taller">Jefe de Taller</option>
+                <option value="Auxiliar">Auxiliar</option>
+            </select>
+        </label>
+        <button type="submit">Registrar</button>
+        <div class="enlace">
+            ¿Ya tienes cuenta? <a href="login.html" style="color:#385563;">Inicia sesión</a>
+        </div>
+    </form>
+</body>
+</html>

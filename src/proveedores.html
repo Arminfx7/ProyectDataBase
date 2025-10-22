@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Registro de Empleados | AutoGest+</title>
+    <title>Registro de Proveedores | AutoGest+</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="./styles/empleados.css" rel="stylesheet">
 </head>
@@ -20,8 +20,8 @@
                     <li>Citas</li>
                     <li>Productos</li>
                     <li>Clientes</li>
-                    <li class="active">Empleados</li>
-                    <li>Proveedores</li>
+                    <li>Empleados</li>
+                    <li class="active">Proveedores</li>
                 </ul>
             </nav>
         </div>
@@ -31,13 +31,15 @@
         </div>
     </aside>
         <form>
-            <h2>Registrar Nuevo Empleado</h2>
+            <h2>Registrar Nuevo Proveedor</h2>
             <div class="inputs-row">
-                <label>Nombres
-                    <input type="text" name="nombre" placeholder="Nombres" required>
+                <label>Nombre
+                    <input type="text" name="nombre" placeholder="Nombre" required>
                 </label>
-                <label>Apellidos
-                    <input type="text" name="apellido" placeholder="Apellidos" required>
+            </div>
+            <div class="inputs-row">
+                <label>Dirección
+                    <input type="text" name="direccion" placeholder="1a. Avenida 9-00, Zona 1, Ciudad de Guatemala" required>
                 </label>
             </div>
             <div class="inputs-row">
@@ -48,25 +50,11 @@
                     <input type="tel" name="telefono" placeholder="Teléfono" required>
                 </label>
             </div>
-            <div class="inputs-row">
-                <label>Sueldo
-                    <input type="number" name="sueldo" placeholder="Q.1000.00" required>
-                </label>
-                <label>Cargo
-                    <select name="cargo" required>
-                        <option value="">Selecciona un cargo</option>
-                        <option value="Mecánico">Mecánico</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Recepcionista">Recepcionista</option>
-                        <option value="Jefe de Taller">Secretario</option>
-                    </select>
-                </label>
-            </div>
             <div class="submit-row">
-                <button type="submit">Registrar Empleado</button>
+                <button type="submit">Registrar Proveedor</button>
             </div>
         </form>
     </div>
-    <script src="./APIs/empleados.js"></script>
+    <script type="module" src="./APIs/proveedores.js"></script>
 </body>
 </html>
