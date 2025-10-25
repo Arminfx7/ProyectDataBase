@@ -20,8 +20,8 @@
                     <li>Citas</li>
                     <li>Productos</li>
                     <li>Clientes</li>
-                    <li>Empleados</li>
-                    <li>Proveedores</li>
+                    <li><a href="./empleados.html">Empleados</a></li>
+                    <li><a href="./proveedores.html">Proveedores</a></li>
                 </ul>
             </nav>
         </div>
@@ -131,6 +131,10 @@
     ctx.lineTo(370, 110);
     ctx.lineTo(400, 87);
     ctx.stroke();
+</script>
+<script src="scripts/auth.js"></script>
+<script>
+    auth.requireRole('ADMINISTRADOR', 'SECRETARIO');
 </script>
 </body>
 </html>
