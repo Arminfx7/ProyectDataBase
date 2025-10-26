@@ -63,31 +63,4 @@ async function cargarEmpleados() {
   }
 }
 
-document.getElementById("btnEliminar").addEventListener("click", async () => {
-
-  const id = document.getElementById("empleadoSelect").value;
-
-  if (!id) {
-    alert("Por favor selecciona un empleado para eliminar");
-    return;
-  }
-
-  if (!confirm("¿Seguro que desea eliminar este empleado?")) return;
-
-  try {
-    const response = await fetch(`${BASE_URL}/api/empleados/${id}`, {
-      method: "DELETE",
-    });
-
-    if (response.ok) {
-      alert("Empleado eliminado con éxito");
-      await cargarEmpleados();
-    } else {
-      alert("Error al eliminar el empleado");
-    }
-  } catch (e) {
-    console.error(e);
-  }
-});
-
 cargarEmpleados();

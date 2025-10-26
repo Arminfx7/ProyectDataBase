@@ -40,7 +40,7 @@ function mostrarEmpleados(empleados){
         card.classList.add('employee-card');
         card.innerHTML = `
                     <div class="employee-header">
-                        <div class="employee-name">${emp.nombres} ${emp.apellidos}</div>
+                        <div class="employee-name">${emp.nombres} ${emp.apellidos} </div>
                         <div class="employee-position">${emp.rol ? emp.rol.nombreRol : 'Sin rol'}</div>
                     </div>
                     <div class="employee-avatar">
@@ -51,17 +51,84 @@ function mostrarEmpleados(empleados){
                             </svg>
                         </div>
                     </div>
-                    <button class="view-more-btn">Ver más</button>`;
+                    <button class="view-more-btn">Opciones</button>`;
 
         const btn = card.querySelector('.view-more-btn');
-        btn.addEventListener('click', () => mostrarInfo(emp));
+        btn.addEventListener('click', () => mostrarOpciones(emp));
         grid.appendChild(card);
     });
 }
 
-//TEMPORAL (HAY QUE MODIFICAR LA FUNCION PARA QUE 
-//LA INFO NO SALGA EN UNA ALERTA) 
-function mostrarInfo(emp){
+async function mostrarOpciones(emp){
+    const opciones = await Swal.fire({
+        title: 'Opciones de Empleado',
+        html: `¿Qué operación desea realizar?`,
+        icon: 'question',
+        
+        showCancelButton: true, 
+        showDenyButton: true,  
+        
+        confirmButtonText: 'Actualizar<br>Empleado', 
+        denyButtonText: 'Eliminar<br>Empleado',   
+        cancelButtonText: 'Cerrar',                
+        
+        confirmButtonColor: '#385563', 
+        denyButtonColor: '#d33',     
+    });
+
+    if (opciones.isConfirmed) {
+        localStorage.setItem('empleadoSeleccionadoId', emp.idEmpleado);
+        window.location.href = `actualizarEmpleados.html`;
+        
+    } else if (opciones.isDenied) {
+        eliminarEmpleado(emp);
+    }
+}
+
+async function eliminarEmpleado(emp){
+    const id = emp.idEmpleado;
+    //console.log(id);
+
+    const confirmacion = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: `Vas a eliminar al empleado: ${emp.nombres} ${emp.apellidos}.`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Sí, Eliminar',
+        cancelButtonText: 'Cancelar'
+    });
+
+    if (confirmacion.isConfirmed) {
+        try {
+        const response = await fetch(`${BASE_URL}/api/empleados/${id}`, {
+        method: "DELETE",
+        });
+
+        if (response.ok) {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Eliminado!',
+                text: 'Empleado eliminado con éxito.'
+            });
+            cargarEmpleados();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al eliminar',
+                //text: `El servidor respondió con un error: ${res.status} - ${errorText.substring(0, 100)}...`
+            });
+        }
+        } catch (e) {
+            console.error(e);
+        }
+        
+    } else if (!confirmacion.isConfirmed) {
+        return;
+    }
+}
+ 
+/*function mostrarInfo(emp){
     alert(`
         Empleado: ${emp.nombres} ${emp.apellidos}
         Rol: ${emp.rol || "Sin rol"}
@@ -70,7 +137,7 @@ function mostrarInfo(emp){
         Fecha de contratación: ${emp.fechaContratacion}
         Correo: ${emp.email || "N/A"}`
     );
-}
+}*/
 
 document.querySelector(".apply-filters-btn").addEventListener("click", async function() {
     let filtrados = [...empleados];
