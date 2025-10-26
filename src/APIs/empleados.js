@@ -9,7 +9,9 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     email: e.target.email.value,
     telefono: e.target.telefono.value,
     sueldo: parseFloat(e.target.sueldo.value),
-    fechaContratacion: new Date().toLocaleDateString('en-CA')
+    fechaContratacion: new Date().toLocaleDateString('en-CA'),
+    password: e.target.password.value || null,
+    rol: { idRol: parseInt(e.target.cargo.value) }
   };
 
   try {
@@ -62,5 +64,22 @@ async function cargarEmpleados() {
       '<option value="">Error de conexión</option>';
   }
 }
+
+// generar contraseña para los empleados ER xd
+function generarPassword() {
+  const longitud = 5
+  const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+  let password = "";
+  for (let i = 0; i < longitud; i++) {
+    password += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+  }
+  return password;
+}
+
+document.getElementById("btnGenerar").addEventListener("click", () => {
+  const nuevaPassword = generarPassword();
+  document.getElementById("passwordGenerada").value = nuevaPassword;
+  alert(`Contraseña generada: ${nuevaPassword}`);
+});
 
 cargarEmpleados();

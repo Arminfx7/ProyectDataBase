@@ -79,11 +79,16 @@
             >Cargo
             <select name="cargo" required>
               <option value="">Selecciona un cargo</option>
-              <option value="Mecánico">Mecánico</option>
-              <option value="Administrador">Administrador</option>
-              <option value="Recepcionista">Recepcionista</option>
-              <option value="Jefe de Taller">Secretario</option>
+              <option value="1">Administrador</option>
+              <option value="2">Mecánico</option>
+              <option value="3">Cajero</option>
+              <option value="4">Secretario</option>
             </select>
+          </label>
+          <label>
+            Generar Contraseña
+            <input type="text" id="passwordGenerada" name="password" placeholder="Contraseña" required />
+            <button type="button" id="btnGenerar" style="margin-top: 15px; padding: 10px;">Generar</button>
           </label>
         </div>
         <div class="submit-row">
