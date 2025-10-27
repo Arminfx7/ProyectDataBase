@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Actualizar Proveedores | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="./styles/empleados.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div>
+                <div class="logo-section">
+                    <img src="./img/logo.png" alt="AutoGest Logo">
+                    <h1>AutoGest<span>+</span></h1>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="citas.html">Citas</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="clientes.html">Clientes</a></li>
+                        <li><a href="empleados.html">Empleados</a></li>
+                        <li class="active"><a href="proveedores.html">Proveedores</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-bottom">
+                <div>Configuración</div>
+                <div style="margin-top:6px;">Cerrar Sesión</div>
+            </div>
+        </aside>
+
+        <form id="updateForm">
+            <h2>Actualizar Proveedor</h2>
+            
+            <div class="inputs-row">
+                <label>Proveedor
+                    <select id="proveedorSelect" required>
+                        <option value="">Cargando proveedores...</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="inputs-row">
+                <label>Nombre
+                    <input type="text" name="nombre" placeholder="Nombre del proveedor" required>
+                </label>
+                <label>Dirección
+                    <input type="text" name="direccion" placeholder="Dirección completa" required>
+                </label>
+            </div>
+
+            <div class="inputs-row">
+                <label>Correo Electrónico
+                    <input type="email" name="email" placeholder="correo@empresa.com" required>
+                </label>
+                <label>Teléfono
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                </label>
+            </div>
+
+            <div class="submit-row">
+                <button type="submit">Actualizar Proveedor</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="./scripts/actualizarProveedores.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
