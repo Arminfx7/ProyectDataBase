@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos Taller Automotriz</title>
+    <link rel="stylesheet" href="./styles/productos.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div>
+            <div class="logo-section">
+                <img src="./img/logo.png" alt="Logo taller">
+                <h1>AutoGest<span>+</span></h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li>Dashboard</li>
+                    <li class="active">Productos</li>
+                    <li>Clientes</li>
+                    <li>Empleados</li>
+                    <li>Proveedores</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav-bottom">
+            <div>Configuración</div>
+            <div>Cerrar Sesión</div>
+        </div>
+    </aside>
+
+
+    <main class="main-content">
+        <header>
+            <h2>Productos de Taller</h2>
+            <input type="text" class="searchbar" id="searchInput" onkeyup="filterProducts()" placeholder="Buscar producto...">
+        </header>
+
+        <section class="dashboard-metrics">
+            <div class="metric-card">
+                <div class="value" id="productCount">0</div>
+                <div class="desc">Productos</div>
+            </div>
+            <div class="metric-card bg">
+                <div class="value" id="lowStockCount">0</div>
+                <div class="desc">Bajo Stock</div>
+            </div>
+            <div class="metric-card bg2">
+                <div class="value">Q.12,500</div>
+                <div class="desc">Ventas hoy</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="products-grid" id="productsGrid">
+            </div>
+        </section>
+    </main>
+</div>
+<script src="./scripts/productos.js"></script>
+</body>
+</html>
