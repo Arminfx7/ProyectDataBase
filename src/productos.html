@@ -25,11 +25,11 @@
                 <label for="filtrarStockBajo">Solo Bajo Stock</label>
               </div>
             </div>
-            
+
             <nav class="nav-menu">
                 <ul>
                     <li><a href="dashboard.html">Dashboard</a></li>
-                        <li><a href="citas.html">Citas</a></li>
+                        <li><a href="vistaCitas.html">Citas</a></li>
                         <li class="active"><a href="productos.html">Productos</a></li>
                         <!--<li><a href="clientes.html">Clientes</a></li>-->
                         <li><a href="vistaEmpleados.html">Empleados</a></li>
@@ -70,7 +70,7 @@
 </div>
 <script src="scripts/auth.js"></script>
 <script>
-    auth.requireRole('ADMINISTRADOR', 'SECRETARIO');
+    auth.requireRole('ADMINISTRADOR', 'SECRETARIO', 'MECANICO');
 </script>
 <script type="module" src="./scripts/productos.js"></script>
 </body>

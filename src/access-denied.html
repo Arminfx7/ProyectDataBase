@@ -2,11 +2,77 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Acceso Denegado</title>
+    <title>Acceso Denegado | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f6fa;
+            color: #2f3640;
+        }
+
+        .access-denied-container {
+            text-align: center;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .access-denied-container h1 {
+            font-size: 2rem;
+            color: #e84118;
+            margin-bottom: 20px;
+        }
+
+        .access-denied-container p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .access-denied-container a {
+            display: inline-block;
+            text-decoration: none;
+            background: #273c75;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+
+        .access-denied-container a:hover {
+            background: #192a56;
+        }
+
+        @media (max-width: 500px) {
+            .access-denied-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .access-denied-container p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Acceso Denegado</h1>
-    <p>No tienes permisos para acceder a esta página.</p>
-    <a href="login.html">Volver al login</a>
+    <div class="access-denied-container">
+        <h1>🚫 Acceso Denegado</h1>
+        <p>No tienes permisos para acceder a esta página.</p>
+        <a href="login.html">Volver al login</a>
+    </div>
 </body>
 </html>

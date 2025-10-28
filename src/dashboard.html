@@ -342,7 +342,7 @@
         </div>
         <div class="nav-bottom">
             <div>Configuración</div>
-            <div style="margin-top:6px;">Cerrar Sesión</div>
+            <div style="margin-top:6px;"><a href="login.html">Cerrar Sesión</a></div>
         </div>
     </aside>
     <main class="main-content">
@@ -478,7 +478,7 @@
 </div>
 <script src="scripts/auth.js"></script>
 <script>
-    auth.requireRole('ADMINISTRADOR', 'SECRETARIO');
+    auth.requireRole('ADMINISTRADOR', 'SECRETARIO', 'MECANICO');
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./scripts/dashboard.js"></script>

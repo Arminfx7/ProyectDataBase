@@ -48,7 +48,7 @@
                 <ul>
                 <li style="margin-top:30px;"><a href="proveedores.html">Agregar Proveedor</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
-                        <li><a href="citas.html">Citas</a></li>
+                        <li><a href="vistaCitas.html">Citas</a></li>
                         <li><a href="productos.html">Productos</a></li>
                         <!--<li><a href="clientes.html">Clientes</a></li>-->
                         <li><a href="empleados.html">Empleados</a></li>
@@ -117,9 +117,9 @@
         </div>
     </footer>
     <script src="scripts/auth.js"></script>
-        <script>
-            auth.requireAdmin();
-        </script>
+    <script>
+        auth.requireRole('ADMINISTRADOR', 'SECRETARIO', "MECANICO");
+    </script>
     <script type="module" src="./scripts/vistaProveedores.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
