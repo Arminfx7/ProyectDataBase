@@ -41,17 +41,14 @@ body {
     padding: 0;
     margin: 0;
 }
-.nav-menu li {
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-    color: #535d69;
-    padding: 0.65rem 0.5rem;
-    border-radius: 9px;
-    margin-bottom: 0.22rem;
-    cursor: pointer;
-    transition: background 0.12s;
+.nav-menu li a {
+    display: block; 
+    padding: 0.65rem 0.5rem;       
+    text-decoration: none; 
+    color: inherit;   
+    width: 100%; 
 }
+
 .nav-menu li:hover, .nav-menu li.active {
     background: #eaf0fa;
     color: #385563;

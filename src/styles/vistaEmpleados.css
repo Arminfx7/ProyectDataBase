@@ -119,6 +119,24 @@
             margin-bottom: 1rem;
         }
 
+        .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar li a {
+    display: block; 
+    padding: 0.65rem 0.5rem;       
+    text-decoration: none; 
+    color: inherit;   
+    width: 100%; 
+}
+
+.sidebar li:hover, .sidebar li.active {
+    background: #eaf0fa;
+    color: #385563;
+}
+
         .filters {
             display: flex;
             flex-direction: column;

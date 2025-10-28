@@ -55,7 +55,6 @@ body {
 }
 
 .nav-menu li a {
-    /* Hace que el enlace ocupe todo el espacio del LI */
     display: block; 
     padding: 0.65rem 0.5rem;       
     text-decoration: none; 
@@ -63,7 +62,6 @@ body {
     width: 100%; 
 }
 
-/* Estilos existentes para hover y active (sin cambios) */
 .nav-menu li:hover, .nav-menu li.active {
     background: #eaf0fa;
     color: #385563;
