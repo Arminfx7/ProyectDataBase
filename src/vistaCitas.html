@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGest+ | Citas</title>
+    <link href="./styles/vistaCitas.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <a href="dashboard.html"><h1>AutoGest<span>+</span></h1></a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar cliente...">
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="icon-button"><img src="./img/bell-fill.svg"></button>
+            <button class="icon-button"><img src="./img/gear-fill.svg"></button>
+            <span class="profile-button"><img src="./img/Sample_User_Icon.png" alt="Usuario"></span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Filtros de Búsqueda</h2>
+            <div class="filters">
+                <div class="filter-item">
+                    <input type="checkbox" id="nombreAZ">
+                    <label for="nombre">Nombre Cliente (A-Z)</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="nombreZA">
+                    <label for="email">Nombre Cliente (Z-A)</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="pendientes">
+                    <label for="activos">Pendientes</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="completadas">
+                    <label for="activos">Completadas</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="Canceladas">
+                    <label for="activos">Canceladas</label>
+                </div>
+            </div>
+            <button class="apply-filters-btn">Aplicar Filtros</button>
+            <ul>
+                <li style="margin-top:30px;"><a href="citas.html">Crear Cita</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li class="active"><a href="citas.html">Citas</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="empleados.html">Empleados</a></li>
+                <li><a href="vistaProveedores.html">Proveedores</a></li>
+                <li><a href="repuestos.html">Repuestos</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="title-section">
+                <h2>Viendo <span>Citas</span></h2>
+            </div>
+
+            <div class="tabla-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Hora</th> 
+                    <th>Motivo</th>
+                    <th>Observaciones</th>
+                    <th>Cliente</th>
+                    <th>Empleado</th>
+                    <th>Vehículo</th>
+                    <th>Guardar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="ID">1</td>
+                    <td data-label="Estado">
+                        <select>
+                            <option>Nuevo</option>
+                            <option>En Proceso</option>
+                            <option>Completada</option>
+                            <option>Cancelada</option>
+                        </select>
+                    </td>
+                    <td data-label="Fecha"></td>
+                    <td data-label="Hora"></td>
+                    <td data-label="Motivo"></td>
+                    <td data-label="Observaciones"></td>
+                    <td data-label="Cliente"></td>
+                    <td data-label="Empleado"></td>
+                    <td data-label="Vehículo"></td>
+                    <td data-label="Guardar"><button class="editar-btn">Guardar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+            <div class="filters-applied" id="filtersApplied">0 Filtro aplicado</div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>AutoGest<span>+</span></h3>
+                    <p class="footer-description">
+                        Streamline your auto repair<br>
+                        services and help innovate your<br>
+                        auto business.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">¿Cómo funciona?</a></li>
+                        <li><a href="#">Featured</a></li>
+                        <li><a href="#">Partnership</a></li>
+                        <li><a href="#">Business Relation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Podcast</a></li>
+                        <li><a href="#">Invite a friend</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Socials</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">©2025 AutoGest+. All rights reserved</div>
+                <div class="footer-legal">
+                    <a href="#">Privacy & Policy</a>
+                    <a href="#">Terms & Condition</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./scripts/vistaCitas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

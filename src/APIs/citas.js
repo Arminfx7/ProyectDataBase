@@ -205,7 +205,7 @@ async function crearCita(idCliente, idVehiculo) {
         id_cliente: idCliente,
         id_vehiculo: idVehiculo,
         id_empleado: parseInt(document.getElementById('empleadoSelect').value),
-        estado: 'Nuevo'
+        estado: 'Pendiente'
     };
 
     try {

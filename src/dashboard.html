@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard | AutoGest+</title>
+    <title>AutoGest+ | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="./styles/dashboard.css" rel="stylesheet">
     <style>
@@ -18,7 +18,7 @@
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #385563;
             transition: transform 0.2s ease;
         }
 
@@ -232,7 +232,7 @@
         }
 
         .refresh-btn {
-            background: #3498db;
+            background: #385563;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -244,7 +244,7 @@
         }
 
         .refresh-btn:hover {
-            background: #2980b9;
+            background: #2596be;
         }
 
         .header-actions {
@@ -279,6 +279,32 @@
                 padding: 1rem;
             }
         }
+        .profile-button {
+            width: 2.2rem;
+            height: 2.2rem;
+            background-color: #6790a1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Evita que la imagen se salga del círculo */
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .profile-button:hover {
+            background-color: #2596be;
+            transform: scale(1.05);
+        }
+
+        .profile-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
     </style>
 </head>
 <body>
@@ -292,7 +318,7 @@
             <nav class="nav-menu">
                 <ul>
                     <li class="active"><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="citas.html">Citas</a></li>
+                    <li><a href="vistaCitas.html">Citas</a></li>
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="clientes.html">Clientes</a></li>
                     <li><a href="vistaEmpleados.html">Empleados</a></li>
@@ -308,14 +334,14 @@
     </aside>
     <main class="main-content">
         <header>
-            <input class="searchbar" placeholder="Buscar en citas..." id="searchInput">
+            <div></div>
             <div class="header-actions">
                 <button class="refresh-btn" id="refreshBtn">
                     Actualizar Datos
                 </button>
                 <span><img src="./img/bell-fill.svg"></span>
                 <span><img src="./img/gear-fill.svg"></span>
-                <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:#e0e7ef;"></span>
+                <span class="profile-button"><img src="./img/Sample_User_Icon.png" alt="Usuario"></span>
             </div>
         </header>
         
@@ -373,6 +399,7 @@
                         <strong>Repuestos con Stock Bajo</strong>
                         <span style="font-size: 0.9rem; color: #64748b;" id="stockBajoCount">0 repuestos</span>
                     </div>
+                    
                     <div class="table-responsive">
                         <table id="repuestosTable">
                             <thead>
@@ -407,9 +434,10 @@
                     </div>
                 </div>
             </div>
+            
             <div class="details-table">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <strong>Citas Recientes</strong>
+                    <strong>Citas Recientes<input class="searchbar" placeholder="Buscar en citas..." id="searchInput"></strong>
                     <span style="font-size: 0.9rem; color: #64748b;" id="citasCount">Mostrando 0 citas</span>
                 </div>
                 <div class="table-responsive">
