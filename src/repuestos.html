@@ -1,86 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>AutoGest+ | Repuestos</title>
-    <link rel="stylesheet" href="./styles/productos.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-</head>
-<body>
-<div class="dashboard-container">
-    <aside class="sidebar">
+    <link rel="stylesheet" href="./styles/productos.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
         <div>
-            <div class="logo-section">
-                <img src="./img/logo.png" alt="Logo taller">
-                <h1>AutoGest<span>+</span></h1>
+          <div class="logo-section">
+            <img src="./img/logo.png" alt="Logo taller" />
+            <h1>AutoGest<span>+</span></h1>
+          </div>
+          <nav class="nav-menu">
+            <div class="filters">
+              <div class="filter-item">
+                <input type="checkbox" id="filtrarNombre" />
+                <label for="filtrarNombre">Nombre (A-Z)</label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="filtrarStockBajo" />
+                <label for="filtrarStockBajo">Solo Bajo Stock</label>
+              </div>
             </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                        <li><a href="citas.html">Citas</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="clientes.html">Clientes</a></li>
-                        <li><a href="vistaEmpleados.html">Empleados</a></li>
-                        <li><a href="vistaProveedores.html">Proveedores</a></li>
-                        <li class="active"><a href="repuestos.html">Repuestos</a></li>
-                </ul>
-            </nav>
+
+            <ul>
+              <li><a href="dashboard.html">Dashboard</a></li>
+              <li><a href="citas.html">Citas</a></li>
+              <li><a href="productos.html">Productos</a></li>
+              <li><a href="clientes.html">Clientes</a></li>
+              <li><a href="vistaEmpleados.html">Empleados</a></li>
+              <li><a href="vistaProveedores.html">Proveedores</a></li>
+              <li class="active"><a href="repuestos.html">Repuestos</a></li>
+            </ul>
+          </nav>
         </div>
         <div class="nav-bottom">
-            <div>Configuración</div>
-            <div>Cerrar Sesión</div>
+          <div>Configuración</div>
+          <div>Cerrar Sesión</div>
         </div>
-    </aside>
+      </aside>
 
-    <main class="main-content">
+      <main class="main-content">
         <header>
-            <h2>Repuestos de Taller</h2>
-            <input type="text" class="searchbar" id="searchInput" onkeyup="filterRepuestos()" placeholder="Buscar repuesto...">
+          <h2>Repuestos de Taller</h2>
+          <input
+            type="text"
+            class="searchbar"
+            id="searchInput"
+            onkeyup="filterRepuestos()"
+            placeholder="Buscar repuesto..."
+          />
         </header>
 
         <section class="dashboard-metrics">
-            <div class="metric-card">
-                <div class="value" id="repuestoCount">0</div>
-                <div class="desc">Repuestos</div>
-            </div>
-            <div class="metric-card bg">
-                <div class="value" id="lowStockCount">0</div>
-                <div class="desc">Bajo Stock</div>
-            </div>
+          <div class="metric-card">
+            <div class="value" id="repuestoCount">0</div>
+            <div class="desc">Repuestos</div>
+          </div>
+          <div class="metric-card bg">
+            <div class="value" id="lowStockCount">0</div>
+            <div class="desc">Bajo Stock</div>
+          </div>
         </section>
 
         <section>
-            <div class="products-grid" id="repuestosGrid">
-            </div>
+          <div class="products-grid" id="repuestosGrid"></div>
         </section>
-    </main>
-</div>
+      </main>
+    </div>
 
-<!-- Modal para asignar repuesto a cita -->
-<div id="modalAsignar" class="modal">
-    <div class="modal-content">
+    <!-- Modal para asignar repuesto a cita -->
+    <div id="modalAsignar" class="modal">
+      <div class="modal-content">
         <span class="close" onclick="cerrarModal()">&times;</span>
         <h3>Asignar repuesto a cita</h3>
         <p id="repuestoNombre"></p>
-        
+
         <label for="cantidadInput">Cantidad:</label>
-        <input type="number" id="cantidadInput" min="1" value="1">
-        
+        <input type="number" id="cantidadInput" min="1" value="1" />
+
         <label for="citaSelect">Seleccione la cita:</label>
         <select id="citaSelect">
-            <option value="">--Seleccione--</option>
+          <option value="">--Seleccione--</option>
         </select>
 
         <button onclick="confirmarAsignacion()">Asignar</button>
+      </div>
     </div>
-</div>
 
-<style>
-.modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background: rgba(0,0,0,0.5);}
-.modal-content { background:#fff; margin:10% auto; padding:20px; border-radius:8px; width:300px; }
-.close { float:right; font-size:24px; cursor:pointer; }
-</style>
-
-<script src="./scripts/repuestos.js"></script>
-</body>
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+      }
+      .close {
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    </style>
+    <script src="scripts/auth.js"></script>
+    <script>
+      auth.requireRole("ADMINISTRADOR", "SECRETARIO", "CAJERO");
+    </script>
+    <script type="module" src="./scripts/repuestos.js"></script>
+  </body>
 </html>

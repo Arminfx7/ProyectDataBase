@@ -1,5 +1,4 @@
-const API_BASE_URL = 'http://localhost:8080/api/repuestos';
-
+const API_BASE_URL = import.meta?.env?.API_BASE || "http://localhost:8080/api/repuestos";
 let repuestos = [];
 let citas = [];
 let repuestoSeleccionado = null;
@@ -113,9 +112,7 @@ function abrirModalAsignar(idRepuesto, nombre, stock) {
     const select = document.getElementById('citaSelect');
     select.innerHTML = '<option value="">--Seleccione--</option>';
     
-    // Filtrar solo citas activas o pendientes si es necesario
     citas.forEach(c => {
-        // Formatear la fecha para mejor visualización
         const fecha = new Date(c.fechaCita).toLocaleDateString();
         select.innerHTML += `<option value="${c.idCita}">${c.motivo} - ${fecha}</option>`;
     });
@@ -160,7 +157,6 @@ async function confirmarAsignacion() {
     });
 
     try {
-        // Construir URL con parámetros
         const url = `http://localhost:8080/api/citaRepuestos/asignar?idCita=${idCita}&idRepuesto=${repuestoSeleccionado.idRepuesto}&cantidad=${cantidad}`;
         
         const response = await auth.fetchWithAuth(url, {
@@ -222,3 +218,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == modal) cerrarModal();
     };
 });
+
+function aplicarFiltros() {
+    let filtrados = [...repuestos];
+
+    // Checkbox: solo bajo stock
+    if (document.getElementById("filtrarStockBajo").checked) {
+        filtrados = filtrados.filter(r => (r.stock || 0) <= 10);
+    }
+
+    // Checkbox: ordenar por nombre
+    if (document.getElementById("filtrarNombre").checked) {
+        filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    }
+
+    // Aplicar búsqueda también
+    const term = document.getElementById("searchInput").value.trim().toLowerCase();
+    if (term) {
+        filtrados = filtrados.filter(r =>
+            (r.nombre && r.nombre.toLowerCase().includes(term)) ||
+            (r.descripcion && r.descripcion.toLowerCase().includes(term))
+        );
+    }
+
+    renderRepuestos(filtrados);
+}
+document.getElementById("filtrarNombre").addEventListener("change", aplicarFiltros);
+document.getElementById("filtrarStockBajo").addEventListener("change", aplicarFiltros);
+document.getElementById("searchInput").addEventListener("input", aplicarFiltros);
+
+window.abrirModalAsignar = abrirModalAsignar;
+window.cerrarModal = cerrarModal;
+window.confirmarAsignacion = confirmarAsignacion;
+window.filterRepuestos = filterRepuestos;

@@ -49,6 +49,44 @@ body {
     width: 100%; 
 }
 
+        .filters {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .filter-item input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            cursor: pointer;
+        }
+
+        .filter-item label {
+            font-size: 0.875rem;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .apply-filters-btn {
+            width: 100%;
+            background-color: #385563;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
 .nav-menu li:hover, .nav-menu li.active {
     background: #eaf0fa;
     color: #385563;

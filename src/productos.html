@@ -14,6 +14,18 @@
                 <img src="./img/logo.png" alt="Logo taller">
                 <h1>AutoGest<span>+</span></h1>
             </div>
+
+            <div class="filters">
+              <div class="filter-item">
+                <input type="checkbox" id="filtrarNombre" />
+                <label for="filtrarNombre">Nombre (A-Z)</label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="filtrarStockBajo" />
+                <label for="filtrarStockBajo">Solo Bajo Stock</label>
+              </div>
+            </div>
+            
             <nav class="nav-menu">
                 <ul>
                     <li><a href="dashboard.html">Dashboard</a></li>
@@ -48,10 +60,6 @@
                 <div class="value" id="lowStockCount">0</div>
                 <div class="desc">Bajo Stock</div>
             </div>
-            <div class="metric-card bg2">
-                <div class="value">Q.12,500</div>
-                <div class="desc">Ventas hoy</div>
-            </div>
         </section>
 
         <section>
@@ -64,6 +72,6 @@
 <script>
     auth.requireRole('ADMINISTRADOR', 'SECRETARIO');
 </script>
-<script src="./scripts/productos.js"></script>
+<script type="module" src="./scripts/productos.js"></script>
 </body>
 </html>
