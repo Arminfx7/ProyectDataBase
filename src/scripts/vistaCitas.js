@@ -8,7 +8,7 @@ let citas = [];
 
 async function cargarCitas() {
     try {
-        const response = await fetch(`${BASE_URL}/api/citas`);
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/citas`);
         citas = await response.json();
         mostrarCitas(citas);
     } catch (e) {
