@@ -23,7 +23,7 @@ let marcasChart = null;
 
 async function obtenerClientes() {
     try {
-        const response = await fetch(`${API_BASE}/clientes`);
+        const response = await auth.fetchWithAuth(`${API_BASE}/clientes`);
         if (!response.ok) throw new Error('Error al obtener clientes');
         return await response.json();
     } catch (error) {
@@ -34,7 +34,7 @@ async function obtenerClientes() {
 
 async function obtenerCitas() {
     try {
-        const response = await fetch(`${API_BASE}/dashboard/resumen`);
+        const response = await auth.fetchWithAuth(`${API_BASE}/dashboard/resumen`);
         if (!response.ok) throw new Error('Error al obtener resumen de citas');
         return await response.json();
     } catch (error) {
@@ -45,7 +45,7 @@ async function obtenerCitas() {
 
 async function obtenerVehiculos() {
     try {
-        const response = await fetch(`${API_BASE}/vehiculos`);
+        const response = await auth.fetchWithAuth(`${API_BASE}/vehiculos`);
         if (!response.ok) throw new Error('Error al obtener vehículos');
         return await response.json();
     } catch (error) {
@@ -56,7 +56,7 @@ async function obtenerVehiculos() {
 
 async function obtenerRepuestos() {
     try {
-        const response = await fetch(`${API_BASE}/repuestos`);
+        const response = await auth.fetchWithAuth(`${API_BASE}/repuestos`);
         if (!response.ok) throw new Error('Error al obtener repuestos');
         return await response.json();
     } catch (error) {
