@@ -11,7 +11,7 @@ let vehiculos = [];
 
 async function cargarClientes() {
     try {
-        const response = await fetch(`${BASE_URL}/api/clientes`);
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/clientes`);
         if (response.ok) {
             clientes = await response.json();
             clienteSelect.innerHTML = '<option value="">Selecciona una opción...</option>';
@@ -31,7 +31,7 @@ async function cargarClientes() {
 
 async function cargarVehiculosDelCliente(idCliente) {
     try {
-        const response = await fetch(`${BASE_URL}/api/clientes/${idCliente}/vehiculos`);
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/clientes/${idCliente}/vehiculos`);
         if (response.ok) {
             const vehiculosCliente = await response.json();
             
@@ -62,7 +62,7 @@ async function cargarVehiculosDelCliente(idCliente) {
 
 async function cargarEmpleados() {
     try {
-        const res = await fetch(`${BASE_URL}/api/empleados`);
+        const res = await auth.fetchWithAuth(`${BASE_URL}/api/empleados`);
         const empleados = await res.json();
 
         let mecanicos = [...empleados];
@@ -141,7 +141,7 @@ async function crearCliente() {
     };
 
     try {
-        const response = await fetch(`${BASE_URL}/api/clientes`, {
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/clientes`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(clienteData)
@@ -175,7 +175,7 @@ async function crearVehiculo(idCliente) {
     };
 
     try {
-        const response = await fetch(`${BASE_URL}/api/vehiculos`, {
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/vehiculos`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(vehiculoData)
@@ -209,7 +209,7 @@ async function crearCita(idCliente, idVehiculo) {
     };
 
     try {
-        const response = await fetch(`${BASE_URL}/api/citas`, {
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/citas`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(citaData)
