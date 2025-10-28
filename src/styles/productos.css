@@ -49,6 +49,24 @@ body {
     width: 100%; 
 }
 
+.nav-bottom a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-bottom a:hover {
+            color: #2596be;
+        }
+
+        .nav-bottom a:visited {
+            color: #94a3b8;
+        }
+
+        .nav-bottom a:visited:hover {
+            color: #2596be;
+        }
+
         .filters {
             display: flex;
             flex-direction: column;
