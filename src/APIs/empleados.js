@@ -15,7 +15,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   };
 
   try {
-    const response = await fetch(`${BASE_URL}/api/empleados`, {
+    const response = await auth.fetchWithAuth(`${BASE_URL}/api/empleados`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(empleado)
@@ -38,7 +38,7 @@ let empleados = [];
 
 async function cargarEmpleados() {
   try {
-    const response = await fetch(`${BASE_URL}/api/empleados`);
+    const response = await auth.fetchWithAuth(`${BASE_URL}/api/empleados`);
     const select = document.getElementById("empleadoSelect");
 
     if (response.ok) {

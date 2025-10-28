@@ -4,7 +4,7 @@ let proveedores = [];
 
 async function cargarProveedores() {
     try {
-        const response = await fetch(`${BASE_URL}/api/proveedores`);
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/proveedores`);
         let data = await response.json();
 
         proveedores = data.filter(p => p.activo === true);
@@ -78,7 +78,7 @@ async function eliminarProveedor(p) {
 
     if (confirmacion.isConfirmed) {
         try {
-            const response = await fetch(`${BASE_URL}/api/proveedores/${p.idProveedor}`, { method: "DELETE" });
+            const response = await auth.fetchWithAuth(`${BASE_URL}/api/proveedores/${p.idProveedor}`, { method: "DELETE" });
             if (response.ok) {
                 Swal.fire({
                     icon: 'success',

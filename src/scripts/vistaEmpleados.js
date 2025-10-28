@@ -1,14 +1,14 @@
 const BASE_URL = import.meta?.env?.API_BASE || "http://localhost:8080";
 const grid = document.getElementById('employeesGrid');
 
-const response = await fetch(`${BASE_URL}/api/empleados`);
+const response = await auth.fetchWithAuth(`${BASE_URL}/api/empleados`);
 let empleados = [];
 empleados = await response.json();
 
 
 async function cargarEmpleados() {
     try {
-        const response = await fetch(`${BASE_URL}/api/empleados`);
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/empleados`);
         const empleados = await response.json();
         mostrarEmpleados(empleados);
         
@@ -101,7 +101,7 @@ async function eliminarEmpleado(emp){
 
     if (confirmacion.isConfirmed) {
         try {
-        const response = await fetch(`${BASE_URL}/api/empleados/${id}`, {
+        const response = await auth.fetchWithAuth(`${BASE_URL}/api/empleados/${id}`, {
         method: "DELETE",
         });
 

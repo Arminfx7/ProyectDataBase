@@ -7,7 +7,7 @@ const form = document.getElementById('updateForm');
 
 async function cargarProveedores() {
     try {
-        const res = await fetch(`${BASE_URL}/api/proveedores`);
+        const res = await auth.fetchWithAuth(`${BASE_URL}/api/proveedores`);
         if (!res.ok) {
             throw new Error(`Error HTTP: ${res.status}`);
         }
@@ -41,7 +41,7 @@ async function cargarProveedores() {
 
 async function cargarDatosProveedor(id) {
     try {
-        const res = await fetch(`${BASE_URL}/api/proveedores/${id}`);
+        const res = await auth.fetchWithAuth(`${BASE_URL}/api/proveedores/${id}`);
         if (!res.ok) {
             throw new Error(`Error HTTP: ${res.status}`);
         }
@@ -110,7 +110,7 @@ form.addEventListener('submit', async (e) => {
     };
 
     try {
-        const res = await fetch(`${BASE_URL}/api/proveedores/${proveedorSeleccionado.idProveedor}`, {
+        const res = await auth.fetchWithAuth(`${BASE_URL}/api/proveedores/${proveedorSeleccionado.idProveedor}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

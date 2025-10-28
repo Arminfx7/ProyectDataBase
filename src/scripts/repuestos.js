@@ -8,7 +8,7 @@ let repuestoSeleccionado = null;
 async function cargarRepuestos() {
     try {
         console.log('Cargando repuestos desde:', API_BASE_URL);
-        const response = await fetch(API_BASE_URL);
+        const response = await auth.fetchWithAuth(API_BASE_URL);
 
         if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
 
@@ -93,7 +93,7 @@ function filterRepuestos() {
 // ------------------- Cargar Citas -------------------
 async function cargarCitas() {
     try {
-        const res = await fetch('http://localhost:8080/api/citas');
+        const res = await auth.fetchWithAuth('http://localhost:8080/api/citas');
         if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
         citas = await res.json();
         console.log('Citas cargadas:', citas);
@@ -163,7 +163,7 @@ async function confirmarAsignacion() {
         // Construir URL con parámetros
         const url = `http://localhost:8080/api/citaRepuestos/asignar?idCita=${idCita}&idRepuesto=${repuestoSeleccionado.idRepuesto}&cantidad=${cantidad}`;
         
-        const response = await fetch(url, {
+        const response = await auth.fetchWithAuth(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

@@ -8,7 +8,7 @@ const form = document.getElementById('updateForm');
 
 async function cargarEmpleados() {
     try {
-        const res = await fetch(`${BASE_URL}/api/empleados`);
+        const res = await auth.fetchWithAuth(`${BASE_URL}/api/empleados`);
         if (!res.ok) {
             throw new Error(`Error HTTP: ${res.status}`);
         }
@@ -94,7 +94,7 @@ form.addEventListener('submit', async (e) => {
     };
 
     try {
-        const res = await fetch(`${BASE_URL}/api/empleados/${empleadoSeleccionado.idEmpleado}`, {
+        const res = await auth.fetchWithAuth(`${BASE_URL}/api/empleados/${empleadoSeleccionado.idEmpleado}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedEmpleado)

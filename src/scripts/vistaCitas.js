@@ -138,7 +138,7 @@ async function guardarCambioEstado(row, cita) {
                 estado: nuevoEstado
             };
 
-            const response = await fetch(`${BASE_URL}/api/citas/${cita.idCita}`, {
+            const response = await auth.fetchWithAuth(`${BASE_URL}/api/citas/${cita.idCita}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

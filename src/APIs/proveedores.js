@@ -12,7 +12,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   };
 
   try {
-    const response = await fetch(`${BASE_URL}/api/proveedores`, {
+    const response = await auth.fetchWithAuth(`${BASE_URL}/api/proveedores`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(proveedor)

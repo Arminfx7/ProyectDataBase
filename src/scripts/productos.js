@@ -5,7 +5,7 @@ let productos = [];
 async function cargarProductos() {
     try {
         console.log('Cargando productos desde:', API_BASE_URL);
-        const response = await fetch(API_BASE_URL);
+        const response = await auth.fetchWithAuth(API_BASE_URL);
         
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
