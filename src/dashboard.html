@@ -287,7 +287,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Evita que la imagen se salga del círculo */
+            overflow: hidden; 
             cursor: pointer;
             border: 2px solid #fff;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -303,6 +303,19 @@
             width: 100%;
             height: 100%;
             object-fit: cover; 
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+
+        .icon-button:hover {
+            background-color: #f3f4f6;
         }
 
     </style>
@@ -339,8 +352,8 @@
                 <button class="refresh-btn" id="refreshBtn">
                     Actualizar Datos
                 </button>
-                <span><img src="./img/bell-fill.svg"></span>
-                <span><img src="./img/gear-fill.svg"></span>
+                <button class="icon-button"><img src="./img/bell-fill.svg"></button>
+                <button class="icon-button"><img src="./img/gear-fill.svg"></button>
                 <span class="profile-button"><img src="./img/Sample_User_Icon.png" alt="Usuario"></span>
             </div>
         </header>

@@ -41,7 +41,7 @@ function mostrarEmpleados(empleados){
         card.innerHTML = `
                     <div class="employee-header">
                         <div class="employee-name">${emp.nombres} ${emp.apellidos} </div>
-                        <div class="employee-position">${emp.rol ? emp.rol.nombreRol : 'Sin rol'}</div>
+                        <div class="employee-position">${emp.nombreRol || 'Sin rol'}</div>
                     </div>
                     <div class="employee-avatar">
                         <div class="avatar-circle">
@@ -144,18 +144,20 @@ document.querySelector(".apply-filters-btn").addEventListener("click", async fun
     //console.log(filtrados);
     let contador = 0;
 
-    /*if (document.getElementById("mecanico").checked) {
-        filtrados = filtrados.filter(e => e.rol?.nombreRol?.toLowerCase() === 'mecanico');
+    if (document.getElementById("mecanico").checked) {
+        filtrados = filtrados.filter(e => e.nombreRol === 'MECANICO');
         contador++;
     }
+
     if (document.getElementById("secretaria").checked) {
-        filtrados = filtrados.filter(e => e.rol?.nombreRol?.toLowerCase() === 'secretaria');
+        filtrados = filtrados.filter(e => e.nombreRol === 'SECRETARIO');
         contador++;
     }
     if (document.getElementById("caja").checked) {
-        filtrados = filtrados.filter(e => e.rol?.nombreRol?.toLowerCase() === 'caja');
+        filtrados = filtrados.filter(e => e.nombreRol === 'CAJERO');
         contador++;
-    }*/
+    }
+
     if (document.getElementById("nombre").checked) {
         filtrados.sort((a, b) => a.nombres.localeCompare(b.nombres));
         contador++;
