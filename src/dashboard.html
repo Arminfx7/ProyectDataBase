@@ -5,6 +5,281 @@
     <title>Dashboard | AutoGest+</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="./styles/dashboard.css" rel="stylesheet">
+    <style>
+        .dashboard-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .metric-card.clientes {
+            border-left-color: #3498db;
+        }
+
+        .metric-card.citas {
+            border-left-color: #e74c3c;
+        }
+
+        .metric-card.vehiculos {
+            border-left-color: #2ecc71;
+        }
+
+        .metric-card.repuestos {
+            border-left-color: #f39c12;
+        }
+
+        .metric-card .desc {
+            display: block;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card .value {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .metric-card .trend {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            color: #64748b;
+        }
+
+        .trend.up {
+            color: #10b981;
+        }
+
+        .trend.down {
+            color: #ef4444;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .stats-container h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Gráficos más pequeños */
+        .charts-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            height: 280px; /* Altura fija más pequeña */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-container h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            color: #1e293b;
+            flex-shrink: 0;
+        }
+
+        .chart-wrapper {
+            flex: 1;
+            position: relative;
+            min-height: 0;
+        }
+
+        .chart-wrapper canvas {
+            max-height: 200px !important;
+        }
+
+        .details-table {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        .details-table strong {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .estado {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .estado.pendiente {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .estado.confirmada {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .estado.completada {
+            background-color: #dbeafe;
+            color: #3730a3;
+        }
+
+        .estado.cancelada {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+        }
+
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: #ef4444;
+            background: #fef2f2;
+            border-radius: 8px;
+        }
+
+        .refresh-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .stats-section,
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+            
+            .chart-container {
+                height: 250px;
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="dashboard-container">
@@ -16,12 +291,12 @@
             </div>
             <nav class="nav-menu">
                 <ul>
-                    <li class="active">Dashboard</li>
-                    <li>Citas</li>
-                    <li>Productos</li>
-                    <li>Clientes</li>
-                    <li>Empleados</li>
-                    <li>Proveedores</li>
+                    <li class="active"><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="citas.html">Citas</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="empleados.html">Empleados</a></li>
+                    <li><a href="proveedores.html">Proveedores</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,105 +307,135 @@
     </aside>
     <main class="main-content">
         <header>
-            <input class="searchbar" placeholder="Buscar empleado">
-            <div style="display:flex;align-items:center;gap:1.1rem;">
+            <input class="searchbar" placeholder="Buscar en citas..." id="searchInput">
+            <div class="header-actions">
+                <button class="refresh-btn" id="refreshBtn">
+                    Actualizar Datos
+                </button>
                 <span><img src="./img/bell-fill.svg"></span>
                 <span><img src="./img/gear-fill.svg"></span>
                 <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:#e0e7ef;"></span>
             </div>
         </header>
-        <div>
+        
+        <div class="dashboard-content">
             <div class="dashboard-metrics">
-                <div class="metric-card">
-                    <span class="desc">Clientes</span>
-                    <span class="value">200</span>
+                <div class="metric-card clientes">
+                    <span class="desc">Total Clientes</span>
+                    <span class="value" id="totalClientes">0</span>
+                    <div class="trend" id="clientesTrend">
+                        <span id="clientesActivos">0 activos</span>
+                    </div>
                 </div>
-                <div class="metric-card">
-                    <span class="desc">Carros Pendientes</span>
-                    <span class="value">350</span>
+                <div class="metric-card citas">
+                    <span class="desc">Citas del Mes</span>
+                    <span class="value" id="totalCitas">0</span>
+                    <div class="trend" id="citasTrend">
+                        <span id="citasPendientes">0 pendientes</span>
+                    </div>
                 </div>
-                <div class="metric-card bg">
-                    <span class="desc">Ventas Diarias</span>
-                    <span class="value">Q.50,000</span>
+                <div class="metric-card vehiculos">
+                    <span class="desc">Vehículos Registrados</span>
+                    <span class="value" id="totalVehiculos">0</span>
+                    <div class="trend" id="vehiculosTrend">
+                        <span id="marcaPopular">Marca más común</span>
+                    </div>
                 </div>
-                <div class="metric-card bg2">
-                    <span class="desc">Carros Reparados</span>
-                    <span class="value">250</span>
+                <div class="metric-card repuestos">
+                    <span class="desc">Repuestos en Stock</span>
+                    <span class="value" id="totalRepuestos">0</span>
+                    <div class="trend" id="repuestosTrend">
+                        <span id="stockBajo">0 con stock bajo</span>
+                    </div>
                 </div>
             </div>
-            <div class="dashboard-charts">
-                <div class="sales-chart">
-                    <strong>Sales Details</strong>
-                    <div class="chart-mock">
-                        <canvas class="line" width="400" height="160"></canvas>
-                        <span class="chart-mock-label">61,0664</span>
+            <div class="stats-section">
+                <div class="stats-container">
+                    <h3>Estadísticas Rápidas</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Citas Completadas</span>
+                            <span class="stat-value" id="citasCompletadas">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Vehículos Únicos</span>
+                            <span class="stat-value" id="vehiculosUnicos">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Stock Total</span>
+                            <span class="stat-value" id="stockTotal">0</span>
+                        </div>
                     </div>
                 </div>
                 <div class="details-table">
-                    <strong>Detalles</strong>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <strong>Repuestos con Stock Bajo</strong>
+                        <span style="font-size: 0.9rem; color: #64748b;" id="stockBajoCount">0 repuestos</span>
+                    </div>
                     <div class="table-responsive">
-                    <table>
+                        <table id="repuestosTable">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="repuestosBody">
+                                <tr>
+                                    <td colspan="5" class="loading">Cargando repuestos...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Estadísticas de Citas por Estado</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="citasChart" width="300" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Vehículos por Marca</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="marcasChart" width="300" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="details-table">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <strong>Citas Recientes</strong>
+                    <span style="font-size: 0.9rem; color: #64748b;" id="citasCount">Mostrando 0 citas</span>
+                </div>
+                <div class="table-responsive">
+                    <table id="citasTable">
                         <thead>
                             <tr>
-                                <th>Carro</th>
+                                <th>Vehículo</th>
                                 <th>Cliente</th>
-                                <th>Fecha</th>
+                                <th>Fecha y Hora</th>
                                 <th>Placa</th>
-                                <th>Precio</th>
-                                <th>Status</th>
+                                <th>Servicio</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="citasBody">
                             <tr>
-                                <td><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=60" alt="Carro 1"></td>
-                                <td>6068 Marjalene Landing</td>
-                                <td>12.08.2019 - 12:53 PM</td>
-                                <td>423</td>
-                                <td>534</td>
-                                <td><span class="status deliv">Deliv</span></td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=60" alt="Carro 2"></td>
-                                <td>6068 Marjalene Landing</td>
-                                <td>12.08.2019 - 12:53 PM</td>
-                                <td>423</td>
-                                <td>295</td>
-                                <td><span class="status pend">Pend</span></td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=60" alt="Carro 3"></td>
-                                <td>6068 Marjalene Landing</td>
-                                <td>12.08.2019 - 12:53 PM</td>
-                                <td>423</td>
-                                <td>849</td>
-                                <td><span class="status rep">Repar</span></td>
+                                <td colspan="7" class="loading">Cargando citas...</td>
                             </tr>
                         </tbody>
                     </table>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
 </div>
-<script>
-    const canvas = document.querySelector('.chart-mock canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.strokeStyle = "#2871c3";
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(0, 100);
-    ctx.lineTo(40, 85);
-    ctx.lineTo(70, 110);
-    ctx.lineTo(110, 60);
-    ctx.lineTo(140, 100);
-    ctx.lineTo(170, 105);
-    ctx.lineTo(200, 74);
-    ctx.lineTo(240, 95);
-    ctx.lineTo(290, 84);
-    ctx.lineTo(370, 110);
-    ctx.lineTo(400, 87);
-    ctx.stroke();
-</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./scripts/dashboard.js"></script>
 </body>
 </html>
