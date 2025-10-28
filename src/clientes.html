@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Cliente | AutoGest+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link href="./styles/citas.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div>
+                <div class="logo-section">
+                    <img src="./img/logo.png" alt="AutoGest Logo" onerror="this.style.display='none'">
+                    <h1>AutoGest<span>+</span></h1>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="citas.html">Citas</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li class="active"><a href="vistaClientes.html">Clientes</a></li>
+                        <li><a href="vistaEmpleados.html">Empleados</a></li>
+                        <li><a href="vistaProveedores.html">Proveedores</a></li>
+                        <li><a href="repuestos.html">Repuestos</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-bottom">
+                <div>Configuración</div>
+                <div style="margin-top:6px;">Cerrar Sesión</div>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <div class="form-card">
+                <h2>Registrar Nuevo Cliente</h2>
+
+                <form id="citaForm">
+                    <!-- Datos del Cliente -->
+                    <h3 class="section-title">Datos del Cliente</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clienteNombre">Nombres </label>
+                            <input type="text" id="clienteNombre" placeholder="Nombres del cliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clienteApellido">Apellidos </label>
+                            <input type="text" id="clienteApellido" placeholder="Apellidos del cliente" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clienteEmail">Correo Electrónico </label>
+                            <input type="email" id="clienteEmail" placeholder="correo@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clienteTelefono">Teléfono </label>
+                            <input type="tel" id="clienteTelefono" placeholder="5555-1234" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row full-width">
+                        <div class="form-group">
+                            <label for="clienteDireccion">Dirección</label>
+                            <input type="text" id="clienteDireccion" placeholder="Dirección completa">
+                        </div>
+                    </div>
+
+                    <!-- Opción de Agregar Vehículo -->
+                    <div class="form-row" style="margin-top: 25px;">
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" id="agregarVehiculo" style="width: auto; cursor: pointer;">
+                                <span>¿Deseas agregar un vehículo para este cliente?</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Campos para Vehículo (ocultos por defecto) -->
+                    <div id="nuevoVehiculoFields" class="hidden">
+                        <h3 class="section-title">
+                            Datos del Vehículo
+                            <span class="option-badge">OPCIONAL</span>
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehiculoMarca">Marca *</label>
+                                <input type="text" id="vehiculoMarca" placeholder="Ej: Toyota">
+                            </div>
+                            <div class="form-group">
+                                <label for="vehiculoModelo">Modelo *</label>
+                                <input type="text" id="vehiculoModelo" placeholder="Ej: Corolla">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehiculoAnio">Año</label>
+                                <input type="number" id="vehiculoAnio" placeholder="2024" min="1900" max="2025">
+                            </div>
+                            <div class="form-group">
+                                <label for="vehiculoPlaca">Placa *</label>
+                                <input type="text" id="vehiculoPlaca" placeholder="ABC-123">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehiculoColor">Color</label>
+                                <input type="text" id="vehiculoColor" placeholder="Ej: Rojo">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Registrar Cliente</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/auth.js"></script>
+    <script>
+        auth.requireRole('ADMINISTRADOR', 'SECRETARIO');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./APIs/cliente.js" type="module"></script>
+</body>
+</html>
