@@ -5,6 +5,9 @@
     <title>AutoGest+ | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="./styles/dashboard.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
     <style>
         .dashboard-metrics {
             display: grid;
@@ -367,6 +370,7 @@
         <header>
             <div></div>
             <div class="header-actions">
+                <button id="pdfBtn" class="refresh-btn">Guardar PDF</button>
                 <button class="refresh-btn" id="refreshBtn">
                     Actualizar Datos
                 </button>
@@ -500,5 +504,40 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./scripts/dashboard.js"></script>
+<script>
+document.getElementById('pdfBtn').addEventListener('click', async () => {
+    const mainContent = document.querySelector('.main-content');
+    const hoy = new Date();
+    const fecha = hoy.toISOString().split('T')[0];
+    const nombreArchivo = `Reporte_${fecha}.pdf`;
+
+    html2canvas(mainContent, {
+        scale: 2,
+        useCORS: true, 
+        backgroundColor: '#ffffff'
+    }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+
+        const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        let position = 0;
+        let heightLeft = pdfHeight;
+
+        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+        heightLeft -= pdf.internal.pageSize.getHeight();
+
+        while (heightLeft > 0) {
+            position = heightLeft - pdfHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+            heightLeft -= pdf.internal.pageSize.getHeight();
+        }
+
+        pdf.save(nombreArchivo);
+    });
+});
+</script>
 </body>
 </html>
